@@ -1,0 +1,27 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "follow_symlinks": true,
+      "folder_exclude_patterns": []
+    }
+  ],
+  "build_systems": [
+    {
+      "cmd": [
+        "make"
+      ],
+      "name": "Build",
+      "working_dir": "${project_path}/build",
+      "variants": [
+        {
+          "name": "Run",
+          "cmd": [
+            "./aws-desktop"
+          ],
+          "working_dir": "${project_path}/build/"
+        }
+      ]
+    }
+  ]
+}
