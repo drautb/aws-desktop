@@ -10,7 +10,7 @@ using namespace std;
 CloudFormationWindow::CloudFormationWindow()
 {
   m_popen = true;
-  m_client = new CloudFormationClient(SETTINGS->getAwsCredentials(),
+  m_client = new CloudFormationClient(SETTINGS->getActiveAwsCredentials(),
                                       SETTINGS->getClientConfiguration());
 
   m_windowTitle = "CloudFormation - ";

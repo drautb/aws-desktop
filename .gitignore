@@ -4,3 +4,5 @@ build/
 imgui_demo.cpp
 *.sublime-workspace
 imgui.ini
+cmake-build-debug
+

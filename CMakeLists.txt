@@ -23,7 +23,8 @@ add_executable(${EXECUTABLE_NAME} MACOSX_BUNDLE
                                   src/settings.cpp
                                   src/imgui_shim.cpp
                                   src/window_manager.cpp
-                                  src/cloudformation_window.cpp)
+                                  src/cloudformation_window.cpp
+                                  src/vpc_visualizer_window.cpp)
 
 # Without this, #include <imgui> won't work.
 include_directories("imgui" "inc")
@@ -51,7 +52,9 @@ find_package(aws-sdk-cpp REQUIRED)
 if (aws-sdk-cpp_FOUND)
   include_directories("${aws-sdk-cpp_DIR}/aws-cpp-sdk-core/include")
   include_directories("${aws-sdk-cpp_DIR}/aws-cpp-sdk-cloudformation/include")
-  target_link_libraries(${EXECUTABLE_NAME} aws-cpp-sdk-cloudformation)
+  include_directories("${aws-sdk-cpp_DIR}/aws-cpp-sdk-ec2/include")
+  target_link_libraries(${EXECUTABLE_NAME} aws-cpp-sdk-cloudformation
+                                           aws-cpp-sdk-ec2)
 endif()
 
 target_compile_features(aws-desktop PRIVATE cxx_delegating_constructors)

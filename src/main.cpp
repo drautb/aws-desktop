@@ -9,6 +9,7 @@
 #include "settings.h"
 #include "window_manager.h"
 #include "cloudformation_window.h"
+#include "vpc_visualizer_window.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ void showMenuBar()
    if (ImGui::BeginMenu("Services"))
    {
      if (ImGui::MenuItem("CloudFormation")) WM->addWindow(new CloudFormationWindow());
+     if (ImGui::MenuItem("VPC Visualizer")) WM->addWindow(new VpcVisualizerWindow());
      ImGui::EndMenu();
    }
 

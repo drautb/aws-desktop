@@ -73,11 +73,20 @@ ClientConfiguration Settings::getClientConfiguration()
   return configuration;
 }
 
-AWSCredentials Settings::getAwsCredentials()
+AWSCredentials Settings::getActiveAwsCredentials()
 {
-  ProfileConfigFileAWSCredentialsProvider* provider = new ProfileConfigFileAWSCredentialsProvider(m_availableProfiles[m_profileIdx].c_str());
+  auto_ptr<ProfileConfigFileAWSCredentialsProvider> provider(new ProfileConfigFileAWSCredentialsProvider(m_availableProfiles[m_profileIdx].c_str()));
 
-  return provider->GetAWSCredentials();
+  return provider.get()->GetAWSCredentials();
+}
+
+map<string, AWSCredentials> getAvailableCredentials()
+{
+  map<string, AWSCredentials> availableCreds;
+
+  
+
+  return availableCreds;
 }
 
 const char* Settings::getStringDescription()

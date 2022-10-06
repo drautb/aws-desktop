@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 #include <aws/core/Region.h>
 #include <aws/core/client/ClientConfiguration.h>
@@ -61,7 +62,9 @@ public:
 
   ClientConfiguration getClientConfiguration();
 
-  AWSCredentials getAwsCredentials();
+  AWSCredentials getActiveAwsCredentials();
+
+  map<string, AWSCredentials> getAvailableCredentials();
 
   const char* getStringDescription();
 
@@ -69,7 +72,7 @@ private:
 
   void loadAvailableProfiles(vector<string>* profiles);
 
-  Region getCurrentRegion();
+  Aws::Region getCurrentRegion();
 
 };
 
